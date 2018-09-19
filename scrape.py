@@ -23,6 +23,6 @@ with session() as c:
   clip.write_gif(animation_file, program='ffmpeg')
 
   page = BeautifulSoup(result.text, "lxml")
-  transcription = page.find("div", {"class": "transfont"}).contents
-  image = pyvips.Image.text(str(transcription[0]), dpi=300, font="FreeSans SWL")
+  transcription = ''.join(page.find("div", {"class": "transfont"}).contents)
+  image = pyvips.Image.text(transcription, dpi=300, font="FreeSans SWL")
   image.write_to_file(transcription_file)
