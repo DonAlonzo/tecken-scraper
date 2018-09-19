@@ -11,3 +11,9 @@ ffmpeg
 ```
 ./install-font.sh
 ```
+
+### Usage
+
+```
+./run.sh <word_id>
+```
