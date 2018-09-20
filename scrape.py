@@ -23,7 +23,8 @@ with session() as c:
     clip = mp.VideoFileClip(video_url)
     clip = clip.resize(height=400)
     (width, height) = clip.size
-    clip = crop(clip, width=540, x_center=width/2)
+    if width > 540:
+      clip = crop(clip, width=540, x_center=width/2)
     clip.write_gif(animation_file, program='ffmpeg', fps=25)
 
     page = BeautifulSoup(result.text, "lxml")
