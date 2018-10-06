@@ -19,8 +19,7 @@ with session() as c:
     transcription_file = "images/{}-transcription.png".format(word_id)
 
     result = c.get(word_url)
-
-    matches = re.search("file: \"(\\/.*\\.mp4)\"", result.text)
+    matches = re.search("<source src=\"(\\/.*\\.mp4)\"", result.text)
     video_src = matches.group(1)
     video_url = "{}{}".format(url, video_src)
     clip = mp.VideoFileClip(video_url)
